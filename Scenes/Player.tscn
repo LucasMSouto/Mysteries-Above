@@ -1,0 +1,190 @@
+[gd_scene load_steps=22 format=3 uid="uid://cj81nkr2blbnf"]
+
+[ext_resource type="Script" uid="uid://ccyjl5uq60nih" path="res://Scripts/Player.gd" id="1_kne1u"]
+[ext_resource type="Script" uid="uid://d0bd7u0ig710a" path="res://Scripts/CameraSpringArm.gd" id="2_e80uo"]
+[ext_resource type="Script" uid="uid://chs2jjag1yse8" path="res://Scripts/cameraFollow.gd" id="3_cxr5p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tdg3f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kne1u"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e80uo"]
+material = SubResource("StandardMaterial3D_kne1u")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dtqjt"]
+margin = 0.0
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ncpa"]
+radius = 0.3
+
+[sub_resource type="Animation" id="Animation_tdg3f"]
+resource_name = "CrouchToCrawl"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprintArmPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.25, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e80uo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprintArmPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.55, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cxr5p"]
+resource_name = "StandingToCrawl"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprintArmPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.55, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kne1u"]
+resource_name = "StandingToCrouch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SprintArmPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.55, 0), Vector3(0, 0.25, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtqjt"]
+_data = {
+&"CrouchToCrawl": SubResource("Animation_tdg3f"),
+&"RESET": SubResource("Animation_e80uo"),
+&"StandingToCrawl": SubResource("Animation_cxr5p"),
+&"StandingToCrouch": SubResource("Animation_kne1u")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kne1u"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxr5p"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tdg3f"]
+material = SubResource("StandardMaterial3D_cxr5p")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kne1u"]
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e80uo"]
+radius = 0.4
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtqjt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5ncpa"]
+material = SubResource("StandardMaterial3D_dtqjt")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e80uo"]
+radius = 0.4
+height = 1.5
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_kne1u")
+
+[node name="MeshStanding" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tdg3f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshStanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480242, -0.50448)
+mesh = SubResource("SphereMesh_e80uo")
+
+[node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("ConvexPolygonShape3D_dtqjt")
+
+[node name="SprintArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+script = ExtResource("2_e80uo")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SprintArmPivot"]
+shape = SubResource("SphereShape3D_5ncpa")
+spring_length = 6.0
+
+[node name="SpringPosition" type="Node3D" parent="SprintArmPivot/SpringArm3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SprintArmPivot" node_paths=PackedStringArray("spring_arm")]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+script = ExtResource("3_cxr5p")
+spring_arm = NodePath("../SpringArm3D/SpringPosition")
+lerp_power = 12.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dtqjt")
+}
+
+[node name="MeshCrounching" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.994166, 0, 0, 0, 0.994166, 0, 0, 0, 0.994166, 0, -0.251, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_kne1u")
+skeleton = NodePath("../MeshStanding")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshCrounching"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0319721, 0.305665, -0.490101)
+mesh = SubResource("SphereMesh_tdg3f")
+
+[node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25143, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_kne1u")
+disabled = true
+
+[node name="MeshCrawling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.598, 0.245)
+visible = false
+mesh = SubResource("CapsuleMesh_e80uo")
+skeleton = NodePath("../MeshStanding")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshCrawling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.712316, -0.0308337)
+mesh = SubResource("SphereMesh_5ncpa")
+
+[node name="CrawlingCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.598304, 0.24464)
+visible = false
+shape = SubResource("CapsuleShape3D_e80uo")
+disabled = true
