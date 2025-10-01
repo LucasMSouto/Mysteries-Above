@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://cj81nkr2blbnf"]
 
-[ext_resource type="Script" uid="uid://ccyjl5uq60nih" path="res://Scripts/Player.gd" id="1_kne1u"]
-[ext_resource type="Script" uid="uid://d0bd7u0ig710a" path="res://Scripts/CameraSpringArm.gd" id="2_e80uo"]
-[ext_resource type="Script" uid="uid://chs2jjag1yse8" path="res://Scripts/cameraFollow.gd" id="3_cxr5p"]
+[ext_resource type="Script" uid="uid://ccyjl5uq60nih" path="res://Scripts/Player/Player.gd" id="1_kne1u"]
+[ext_resource type="Script" uid="uid://d0bd7u0ig710a" path="res://Scripts/Player/CameraSpringArm.gd" id="2_e80uo"]
+[ext_resource type="Script" uid="uid://chs2jjag1yse8" path="res://Scripts/Player/cameraFollow.gd" id="3_cxr5p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tdg3f"]
 
@@ -141,13 +141,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 script = ExtResource("2_e80uo")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="SprintArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.97, 0, 0)
 shape = SubResource("SphereShape3D_5ncpa")
 spring_length = 6.0
 
 [node name="SpringPosition" type="Node3D" parent="SprintArmPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SprintArmPivot" node_paths=PackedStringArray("spring_arm")]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+fov = 70.0
 script = ExtResource("3_cxr5p")
 spring_arm = NodePath("../SpringArm3D/SpringPosition")
 lerp_power = 12.0

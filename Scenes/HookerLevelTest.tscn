@@ -1,6 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyseqk8pgcw4n"]
+[gd_scene load_steps=15 format=3 uid="uid://3vth30ujhvg4"]
 
-[ext_resource type="PackedScene" uid="uid://cj81nkr2blbnf" path="res://Scenes/Player.tscn" id="1_goq3p"]
+[ext_resource type="PackedScene" uid="uid://cj81nkr2blbnf" path="res://Scenes/Player.tscn" id="1_4cf2v"]
+[ext_resource type="Script" uid="uid://hk1r6iec6xhv" path="res://Scripts/Scene_Main/main_HookerTestLevel.gd" id="1_uqkb3"]
+[ext_resource type="Texture2D" uid="uid://crb55voj0ddvx" path="res://UI/HUD/test/aimCross.svg" id="2_uqkb3"]
+[ext_resource type="Script" uid="uid://m1exo6hwin3p" path="res://Scripts/UI/aimpoint.gd" id="4_n660p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kfcwk"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -38,6 +41,7 @@ size = Vector2(5, 25)
 data = PackedVector3Array(2.5, -12.5, 0, -2.5, -12.5, 0, 2.5, 12.5, 0, -2.5, -12.5, 0, -2.5, 12.5, 0, 2.5, 12.5, 0)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_uqkb3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_d84xi")
@@ -55,7 +59,7 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wvy5o")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_goq3p")]
+[node name="Player" parent="." instance=ExtResource("1_4cf2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44589, 13.1309)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -75,3 +79,25 @@ mesh = SubResource("QuadMesh_wvy5o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ra883")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="AimArea" type="MarginContainer" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AimCross" type="Sprite2D" parent="HUD/AimArea"]
+visible = false
+position = Vector2(21, 19)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_uqkb3")
+script = ExtResource("4_n660p")
