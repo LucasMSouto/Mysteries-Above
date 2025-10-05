@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj81nkr2blbnf"]
+[gd_scene load_steps=24 format=3 uid="uid://cj81nkr2blbnf"]
 
 [ext_resource type="Script" uid="uid://ccyjl5uq60nih" path="res://Scripts/Player/Player.gd" id="1_kne1u"]
 [ext_resource type="Script" uid="uid://d0bd7u0ig710a" path="res://Scripts/Player/CameraSpringArm.gd" id="2_e80uo"]
 [ext_resource type="Script" uid="uid://chs2jjag1yse8" path="res://Scripts/Player/cameraFollow.gd" id="3_cxr5p"]
+[ext_resource type="Script" uid="uid://df6xbimmco3ct" path="res://Scripts/Multitool/GraplingHook.gd" id="4_dewec"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tdg3f"]
 
@@ -13,6 +14,8 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_kne1u")
 radius = 0.1
 height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_dewec"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dtqjt"]
 margin = 0.0
@@ -131,6 +134,18 @@ mesh = SubResource("CapsuleMesh_tdg3f")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshStanding"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.480242, -0.50448)
 mesh = SubResource("SphereMesh_e80uo")
+
+[node name="MultiTool" type="Node3D" parent="MeshStanding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704865, 0.273156, -0.256731)
+script = ExtResource("4_dewec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshStanding/MultiTool"]
+transform = Transform3D(0.076558, 0, 0, 0, 0.0761417, 0, 0, 0, 0.460966, 0, 0, 0)
+mesh = SubResource("BoxMesh_dewec")
+
+[node name="RayCast3D" type="RayCast3D" parent="MeshStanding/MultiTool"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.228726)
+collision_mask = 4096
 
 [node name="StandingCollisionShape" type="CollisionShape3D" parent="."]
 visible = false
