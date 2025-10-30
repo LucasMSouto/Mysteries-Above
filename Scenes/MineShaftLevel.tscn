@@ -120,6 +120,7 @@ shadow_enabled = true
 
 [node name="Andar0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693333, -0.137283, -0.404118)
+visible = false
 
 [node name="Entrada" type="MeshInstance3D" parent="Andar0"]
 mesh = SubResource("PlaneMesh_h41il")
@@ -143,7 +144,6 @@ mesh = SubResource("PlaneMesh_0cekb")
 
 [node name="Andar-1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693333, -0.137283, -0.404118)
-visible = false
 
 [node name="Entrada" type="MeshInstance3D" parent="Andar-1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0547, -50, -73.7793)

@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgteov2biyuth"]
+
+[ext_resource type="Script" uid="uid://dms6pvyxkmmm7" path="res://Scripts/UI/main_menu.gd" id="1_g18y6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g18y6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.758192, 0.758192, 0.758192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjmdf"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_370kx"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.687507, 0.86075, 1)
+script = ExtResource("1_g18y6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxFlat_g18y6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mjmdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_370kx")
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxFlat_g18y6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mjmdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_370kx")
+text = "SETTINGS"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxFlat_g18y6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mjmdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_370kx")
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+theme_override_styles/hover = SubResource("StyleBoxFlat_g18y6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mjmdf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_370kx")
+text = "QUIT"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
