@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce2kvn1ec5jon"]
 
 [ext_resource type="Script" uid="uid://dx1ob6m2y1wlq" path="res://Scripts/UI/splash_screen.gd" id="1_4l8wv"]
-[ext_resource type="Texture2D" uid="uid://bod2d2gvlfua8" path="res://icon.svg" id="1_418jb"]
+[ext_resource type="Texture2D" uid="uid://cius356672ny2" path="res://IGS_Logo_black_2.png" id="2_4l8wv"]
 
 [node name="SplashScreen" type="ColorRect"]
 anchors_preset = 15
@@ -22,7 +22,7 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 layout_mode = 2
-texture = ExtResource("1_418jb")
+texture = ExtResource("2_4l8wv")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5

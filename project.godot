@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mysteries Above"
-run/main_scene="res://Scenes/TesterLevel.tscn"
+run/main_scene="uid://ce2kvn1ec5jon"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
