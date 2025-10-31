@@ -1,0 +1,363 @@
+[gd_resource type="VisualShader" load_steps=35 format=3 uid="uid://dbc4nwsdloxik"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5rumb"]
+parameter_name = "Color_Texture"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jcum6"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5rumb"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_jcum6"]
+parameter_name = "Normal_Map"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_5rumb"]
+expanded_output_ports = [0]
+parameter_name = "Outline_Color"
+default_value_enabled = true
+default_value = Color(0, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeTransformDecompose" id="VisualShaderNodeTransformDecompose_5rumb"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_jcum6"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ketwe"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_g0p08"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_5rumb"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g0p08"]
+input_name = "normal"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_jcum6"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_5rumb"]
+input_name = "modelview_matrix"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_52p24"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorFunc" id="VisualShaderNodeVectorFunc_sbnlp"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_52p24"]
+output_port_for_preview = 0
+input_name = "viewport_size"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_sbnlp"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5rumb"]
+parameter_name = "Outline_Width"
+hint = 1
+max = 2.0
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5rumb"]
+default_input_values = [0, 0.0, 1, 2.0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_wej1h"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 3
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_wej1h"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jcum6"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ks2uu"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_ketwe"]
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ks2uu"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_g0p08"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_52p24"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_sbnlp"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ketwe"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 1.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5rumb"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ketwe"]
+input_name = "projection_matrix"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_g0p08"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeTransformDecompose" id="VisualShaderNodeTransformDecompose_52p24"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_sbnlp"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_front, diffuse_lambert, specular_schlick_ggx, unshaded, skip_vertex_transform, world_vertex_coords;
+
+uniform float Outline_Width : hint_range(0.0, 2.0) = 1.0;
+uniform vec4 Outline_Color : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
+
+
+
+void vertex() {
+// Input:6
+	mat4 n_out6p0 = PROJECTION_MATRIX;
+
+
+// TransformDecompose:10
+	vec3 n_out10p0 = n_out6p0[0].xyz;
+	vec3 n_out10p1 = n_out6p0[1].xyz;
+	vec3 n_out10p2 = n_out6p0[2].xyz;
+	vec3 n_out10p3 = n_out6p0[3].xyz;
+
+
+// VectorCompose:11
+	vec4 n_out11p0 = vec4(n_out10p0.x, n_out10p1.x, n_out10p2.x, n_out10p3.x);
+
+
+// Input:2
+	mat4 n_out2p0 = MODELVIEW_MATRIX;
+
+
+// TransformDecompose:8
+	vec3 n_out8p0 = n_out2p0[0].xyz;
+	vec3 n_out8p1 = n_out2p0[1].xyz;
+	vec3 n_out8p2 = n_out2p0[2].xyz;
+	vec3 n_out8p3 = n_out2p0[3].xyz;
+
+
+// VectorCompose:9
+	vec4 n_out9p0 = vec4(n_out8p0.x, n_out8p1.x, n_out8p2.x, n_out8p3.x);
+
+
+// Input:3
+	vec3 n_out3p0 = VERTEX;
+
+
+// VectorDecompose:5
+	float n_out5p0 = n_out3p0.x;
+	float n_out5p1 = n_out3p0.y;
+	float n_out5p2 = n_out3p0.z;
+
+
+// VectorCompose:4
+	float n_in4p3 = 1.00000;
+	vec4 n_out4p0 = vec4(n_out5p0, n_out5p1, n_out5p2, n_in4p3);
+
+
+// VectorOp:7
+	vec4 n_out7p0 = n_out9p0 * n_out4p0;
+
+
+// VectorOp:12
+	vec4 n_out12p0 = n_out11p0 * n_out7p0;
+
+
+// VectorDecompose:23
+	float n_out23p0 = n_out12p0.x;
+	float n_out23p1 = n_out12p0.y;
+	float n_out23p2 = n_out12p0.z;
+	float n_out23p3 = n_out12p0.w;
+
+
+// VectorCompose:29
+	vec2 n_out29p0 = vec2(n_out23p0, n_out23p1);
+
+
+// VectorCompose:14
+	vec3 n_out14p0 = vec3(n_out8p0.x, n_out8p1.x, n_out8p3.x);
+
+
+// Input:16
+	vec3 n_out16p0 = NORMAL;
+
+
+// VectorOp:15
+	vec3 n_out15p0 = n_out14p0 * n_out16p0;
+
+
+// VectorDecompose:19
+	float n_out19p0 = n_out15p0.x;
+	float n_out19p1 = n_out15p0.y;
+	float n_out19p2 = n_out15p0.z;
+
+
+// VectorCompose:20
+	vec2 n_out20p0 = vec2(n_out19p0, n_out19p1);
+
+
+// VectorFunc:21
+	vec2 n_out21p0 = normalize(n_out20p0);
+
+
+// Input:22
+	vec2 n_out22p0 = VIEWPORT_SIZE;
+
+
+// VectorOp:28
+	vec2 n_out28p0 = n_out21p0 / n_out22p0;
+
+
+// FloatParameter:25
+	float n_out25p0 = Outline_Width;
+
+
+// FloatOp:26
+	float n_in26p1 = 2.00000;
+	float n_out26p0 = n_out25p0 * n_in26p1;
+
+
+// FloatOp:34
+	float n_out34p0 = n_out23p3 * n_out26p0;
+
+
+// VectorOp:35
+	vec2 n_out35p0 = n_out28p0 * vec2(n_out34p0);
+
+
+// VectorOp:30
+	vec2 n_out30p0 = n_out29p0 + n_out35p0;
+
+
+// VectorDecompose:31
+	float n_out31p0 = n_out30p0.x;
+	float n_out31p1 = n_out30p0.y;
+
+
+// VectorDecompose:33
+	float n_out33p0 = n_out12p0.x;
+	float n_out33p1 = n_out12p0.y;
+	float n_out33p2 = n_out12p0.z;
+	float n_out33p3 = n_out12p0.w;
+
+
+// VectorCompose:32
+	vec4 n_out32p0 = vec4(n_out31p0, n_out31p1, n_out33p2, n_out33p3);
+
+
+// Output:0
+	VERTEX = vec3(n_out32p0.xyz);
+
+
+}
+
+void fragment() {
+// ColorParameter:6
+	vec4 n_out6p0 = Outline_Color;
+
+
+// Output:0
+	ALBEDO = vec3(n_out6p0.xyz);
+
+
+}
+"
+modes/cull = 1
+flags/unshaded = true
+flags/skip_vertex_transform = true
+flags/world_vertex_coords = true
+nodes/vertex/0/position = Vector2(5920, 3100)
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_5rumb")
+nodes/vertex/2/position = Vector2(1960, 1120)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_jcum6")
+nodes/vertex/3/position = Vector2(1480, 1380)
+nodes/vertex/4/node = SubResource("VisualShaderNodeVectorCompose_ketwe")
+nodes/vertex/4/position = Vector2(2120, 1320)
+nodes/vertex/5/node = SubResource("VisualShaderNodeVectorDecompose_5rumb")
+nodes/vertex/5/position = Vector2(1800, 1380)
+nodes/vertex/6/node = SubResource("VisualShaderNodeInput_ketwe")
+nodes/vertex/6/position = Vector2(1960, 960)
+nodes/vertex/7/node = SubResource("VisualShaderNodeVectorOp_g0p08")
+nodes/vertex/7/position = Vector2(2860, 1160)
+nodes/vertex/8/node = SubResource("VisualShaderNodeTransformDecompose_52p24")
+nodes/vertex/8/position = Vector2(2360, 1120)
+nodes/vertex/9/node = SubResource("VisualShaderNodeVectorCompose_sbnlp")
+nodes/vertex/9/position = Vector2(2640, 1080)
+nodes/vertex/10/node = SubResource("VisualShaderNodeTransformDecompose_5rumb")
+nodes/vertex/10/position = Vector2(2380, 900)
+nodes/vertex/11/node = SubResource("VisualShaderNodeVectorCompose_jcum6")
+nodes/vertex/11/position = Vector2(2880, 880)
+nodes/vertex/12/node = SubResource("VisualShaderNodeVectorOp_ketwe")
+nodes/vertex/12/position = Vector2(3200, 1020)
+nodes/vertex/14/node = SubResource("VisualShaderNodeVectorCompose_g0p08")
+nodes/vertex/14/position = Vector2(2620, 1900)
+nodes/vertex/15/node = SubResource("VisualShaderNodeVectorOp_5rumb")
+nodes/vertex/15/position = Vector2(2967.79, 1966.8)
+nodes/vertex/16/node = SubResource("VisualShaderNodeInput_g0p08")
+nodes/vertex/16/position = Vector2(2560, 2160)
+nodes/vertex/19/node = SubResource("VisualShaderNodeVectorDecompose_jcum6")
+nodes/vertex/19/position = Vector2(3460, 2500)
+nodes/vertex/20/node = SubResource("VisualShaderNodeVectorCompose_52p24")
+nodes/vertex/20/position = Vector2(3720, 2520)
+nodes/vertex/21/node = SubResource("VisualShaderNodeVectorFunc_sbnlp")
+nodes/vertex/21/position = Vector2(3980, 2540)
+nodes/vertex/22/node = SubResource("VisualShaderNodeInput_52p24")
+nodes/vertex/22/position = Vector2(3340, 3000)
+nodes/vertex/23/node = SubResource("VisualShaderNodeVectorDecompose_sbnlp")
+nodes/vertex/23/position = Vector2(3460, 2660)
+nodes/vertex/25/node = SubResource("VisualShaderNodeFloatParameter_5rumb")
+nodes/vertex/25/position = Vector2(3680, 3120)
+nodes/vertex/26/node = SubResource("VisualShaderNodeFloatOp_5rumb")
+nodes/vertex/26/position = Vector2(4060, 3180)
+nodes/vertex/28/node = SubResource("VisualShaderNodeVectorOp_wej1h")
+nodes/vertex/28/position = Vector2(4220, 2660)
+nodes/vertex/29/node = SubResource("VisualShaderNodeVectorCompose_wej1h")
+nodes/vertex/29/position = Vector2(4600, 2560)
+nodes/vertex/30/node = SubResource("VisualShaderNodeVectorOp_ks2uu")
+nodes/vertex/30/position = Vector2(4900, 2700)
+nodes/vertex/31/node = SubResource("VisualShaderNodeVectorDecompose_ketwe")
+nodes/vertex/31/position = Vector2(5080, 2960)
+nodes/vertex/32/node = SubResource("VisualShaderNodeVectorCompose_ks2uu")
+nodes/vertex/32/position = Vector2(5460, 2820)
+nodes/vertex/33/node = SubResource("VisualShaderNodeVectorDecompose_g0p08")
+nodes/vertex/33/position = Vector2(5080, 3140)
+nodes/vertex/34/node = SubResource("VisualShaderNodeFloatOp_52p24")
+nodes/vertex/34/position = Vector2(4220, 2960)
+nodes/vertex/35/node = SubResource("VisualShaderNodeVectorOp_sbnlp")
+nodes/vertex/35/position = Vector2(4480, 2800)
+nodes/vertex/connections = PackedInt32Array(3, 0, 5, 0, 5, 0, 4, 0, 5, 1, 4, 1, 5, 2, 4, 2, 4, 0, 7, 1, 2, 0, 8, 0, 8, 0, 9, 0, 8, 1, 9, 1, 8, 2, 9, 2, 8, 3, 9, 3, 9, 0, 7, 0, 6, 0, 10, 0, 10, 0, 11, 0, 10, 1, 11, 1, 10, 2, 11, 2, 10, 3, 11, 3, 11, 0, 12, 0, 7, 0, 12, 1, 14, 0, 15, 0, 16, 0, 15, 1, 8, 0, 14, 0, 8, 1, 14, 1, 8, 3, 14, 2, 19, 0, 20, 0, 19, 1, 20, 1, 20, 0, 21, 0, 12, 0, 23, 0, 25, 0, 26, 0, 21, 0, 28, 0, 23, 0, 29, 0, 23, 1, 29, 1, 29, 0, 30, 0, 30, 0, 31, 0, 31, 0, 32, 0, 31, 1, 32, 1, 15, 0, 19, 0, 22, 0, 28, 1, 12, 0, 33, 0, 23, 3, 34, 0, 26, 0, 34, 1, 28, 0, 35, 0, 34, 0, 35, 1, 35, 0, 30, 1, 33, 2, 32, 2, 33, 3, 32, 3, 32, 0, 0, 0)
+nodes/fragment/0/position = Vector2(1520, 220)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_5rumb")
+nodes/fragment/2/position = Vector2(-240, 1220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_jcum6")
+nodes/fragment/3/position = Vector2(160, 1360)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_5rumb")
+nodes/fragment/4/position = Vector2(160, 1780)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_jcum6")
+nodes/fragment/5/position = Vector2(-240, 1640)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_5rumb")
+nodes/fragment/6/position = Vector2(243.542, 421.627)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 5, 0, 4, 2, 6, 0, 0, 0)

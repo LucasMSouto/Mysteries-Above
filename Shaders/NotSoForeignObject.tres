@@ -1,0 +1,54 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://bril5n1rgvn0o"]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_jcum6"]
+parameter_name = "ActiveTransparency"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_5rumb"]
+default_input_values = [0, 1.0, 1, 1.0, 2, 0.5]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5rumb"]
+parameter_name = "TransparencyValue"
+hint = 2
+step = 0.001
+default_value_enabled = true
+default_value = 0.97
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float TransparencyValue : hint_range(0.0, 1.0, 0.0010000000475) = 0.97000002861023;
+uniform bool ActiveTransparency = false;
+
+
+
+void light() {
+// FloatParameter:5
+	float n_out5p0 = TransparencyValue;
+
+
+// BooleanParameter:3
+	bool n_out3p0 = ActiveTransparency;
+
+
+// Mix:4
+	float n_in4p0 = 1.00000;
+	float n_out4p0 = mix(n_in4p0, n_out5p0, (n_out3p0 ? 1.0 : 0.0));
+
+
+// Output:0
+	ALPHA = n_out4p0;
+
+
+}
+"
+nodes/vertex/0/position = Vector2(5040, 3300)
+nodes/fragment/0/position = Vector2(1520, 220)
+nodes/light/3/node = SubResource("VisualShaderNodeBooleanParameter_jcum6")
+nodes/light/3/position = Vector2(-420, 400)
+nodes/light/4/node = SubResource("VisualShaderNodeMix_5rumb")
+nodes/light/4/position = Vector2(-40, 220)
+nodes/light/5/node = SubResource("VisualShaderNodeFloatParameter_5rumb")
+nodes/light/5/position = Vector2(-420, 0)
+nodes/light/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 0, 2, 5, 0, 4, 1)
