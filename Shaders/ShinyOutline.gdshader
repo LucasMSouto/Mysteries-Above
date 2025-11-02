@@ -4,6 +4,7 @@ render_mode cull_front, unshaded, blend_add;
 uniform vec4 ShineColor: source_color;
 uniform float outline_width : hint_range(0.0,3) = 1.3;
 uniform float Emission_Energy : hint_range(0.0, 16.0) = 6;
+uniform bool showOutline;
 
 void vertex() {
 	//Outlines
@@ -21,5 +22,10 @@ void fragment() {
 	//Shiny Outline Effect
 	ALBEDO = ShineColor.rgb * Emission_Energy;
 	EMISSION = ShineColor.rgb * Emission_Energy;
-	ALPHA = ShineColor.a;
+	if(showOutline){
+		ALPHA = ShineColor.a;
+	}else{
+		ALPHA = 0.0;
+	}
+	
 }

@@ -1,52 +1,58 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw5coqmwthku8"]
+[gd_scene load_steps=13 format=3 uid="uid://cw5coqmwthku8"]
 
-[ext_resource type="Shader" uid="uid://bril5n1rgvn0o" path="res://Shaders/NotSoForeignObject.tres" id="1_op1kj"]
 [ext_resource type="Shader" uid="uid://cnb20easb8gxm" path="res://Shaders/ShinyOutline.gdshader" id="1_x8u85"]
-[ext_resource type="Shader" uid="uid://b32empye8mq40" path="res://Shaders/TimeDematrialization.tres" id="3_t2aqy"]
+[ext_resource type="Script" uid="uid://vwani15tkkt4" path="res://Scripts/Multitool&Items/PickableObject.gd" id="2_wxnxd"]
+[ext_resource type="PackedScene" uid="uid://crdpoa8pv2pil" path="res://ParticleSystems/time_dematrialization_particles.tscn" id="3_wxnxd"]
 [ext_resource type="Texture2D" uid="uid://dpw864ey6t5v3" path="res://Assets/Time Dematrialization Shader/Textures/TimeDematrializationTex.png" id="4_wxnxd"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_myblh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxnxd"]
-render_priority = 0
-shader = ExtResource("1_x8u85")
-shader_parameter/ShineColor = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 1.3
-shader_parameter/Emission_Energy = 6.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2aqy"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_wxnxd")
-shader = ExtResource("1_op1kj")
-shader_parameter/TransparencyValue = 0.613
-shader_parameter/ActiveTransparency = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_svb2n"]
-render_priority = 0
-shader = ExtResource("3_t2aqy")
-shader_parameter/DematrializationTexture = ExtResource("4_wxnxd")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2aqy"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.921569)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_op1kj"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_svb2n")
 shader = ExtResource("1_x8u85")
 shader_parameter/ShineColor = Color(0.723697, 0.526331, 0.0967994, 1)
-shader_parameter/outline_width = 2.141
-shader_parameter/Emission_Energy = 5.975
+shader_parameter/outline_width = 2.0
+shader_parameter/Emission_Energy = 6.0
+shader_parameter/showOutline = false
 
 [sub_resource type="BoxMesh" id="BoxMesh_x8u85"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8u85"]
-render_priority = 1
-next_pass = SubResource("ShaderMaterial_op1kj")
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 16.0
-grow_amount = 7.429
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_qpgfm"]
+expanded_output_ports = [0]
+texture = ExtResource("4_wxnxd")
+
+[sub_resource type="VisualShader" id="VisualShader_svb2n"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_3;
+
+
+
+void fragment() {
+// Texture2D:3
+	vec4 n_out3p0 = texture(tex_frg_3, UV);
+	float n_out3p4 = n_out3p0.a;
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = n_out3p4;
+
+
+}
+"
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_qpgfm")
+nodes/fragment/3/position = Vector2(-240, 300)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 3, 4, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w2w2c"]
 render_priority = 0
-shader = ExtResource("3_t2aqy")
-shader_parameter/DematrializationTexture = ExtResource("4_wxnxd")
+shader = SubResource("VisualShader_svb2n")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qpwq2"]
 
@@ -56,18 +62,15 @@ shader_parameter/DematrializationTexture = ExtResource("4_wxnxd")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_myblh")
 
-[node name="TimeDematrializedCube2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0684167, 0, 0, 0, 0.293543, 0, 0, 0, 0.0976334, 0.205007, 0.111945, -0.104409)
-material_override = SubResource("ShaderMaterial_t2aqy")
-material_overlay = SubResource("ShaderMaterial_op1kj")
-mesh = SubResource("BoxMesh_x8u85")
-skeleton = NodePath("../TimeDematrializedCube")
-
 [node name="TimeDematrializedCube" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0.0460382, 0)
-material_override = SubResource("StandardMaterial3D_x8u85")
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0.000574291, 0.0359775, -0.0010772)
+material_override = SubResource("StandardMaterial3D_t2aqy")
 material_overlay = SubResource("ShaderMaterial_op1kj")
 mesh = SubResource("BoxMesh_x8u85")
+script = ExtResource("2_wxnxd")
+
+[node name="TimeDematrializationParticles" parent="TimeDematrializedCube" instance=ExtResource("3_wxnxd")]
+transform = Transform3D(1, -1.62004e-12, -2.91038e-11, 1.62004e-12, 1, 2.48816e-21, 2.91038e-11, -2.53531e-21, 1, 0.099601, 9.05991e-06, 4.08888e-05)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0406728, 0.107876, 0.616668)
@@ -75,6 +78,7 @@ fov = 29.444
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.230882, -0.680454)
+visible = false
 material_override = SubResource("ShaderMaterial_w2w2c")
 mesh = SubResource("QuadMesh_qpwq2")
 

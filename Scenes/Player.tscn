@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ccyjl5uq60nih" path="res://Scripts/Player/Player.gd" id="1_kne1u"]
 [ext_resource type="Script" uid="uid://d0bd7u0ig710a" path="res://Scripts/Player/CameraSpringArm.gd" id="2_e80uo"]
 [ext_resource type="Script" uid="uid://chs2jjag1yse8" path="res://Scripts/Player/cameraFollow.gd" id="3_cxr5p"]
-[ext_resource type="Script" uid="uid://df6xbimmco3ct" path="res://Scripts/Multitool/GraplingHook.gd" id="4_dewec"]
+[ext_resource type="Script" uid="uid://df6xbimmco3ct" path="res://Scripts/Multitool&Items/GraplingHook.gd" id="4_dewec"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tdg3f"]
 
