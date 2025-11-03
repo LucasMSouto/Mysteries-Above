@@ -1,0 +1,127 @@
+[gd_scene load_steps=18 format=3 uid="uid://crdpoa8pv2pil"]
+
+[ext_resource type="Script" uid="uid://chjmeyrk8l7jq" path="res://Scripts/ParticleSystems/TimeDematrializationParticles.gd" id="1_s27qk"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t2aqy"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 1
+emission_sphere_radius = 1.4
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.01
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxnxd"]
+depth_draw_mode = 2
+no_depth_test = true
+albedo_color = Color(0.584314, 0.235294, 0.341176, 1)
+emission_enabled = true
+emission = Color(0.584314, 0.235294, 0.341176, 1)
+grow_amount = 0.296
+
+[sub_resource type="QuadMesh" id="QuadMesh_wxnxd"]
+material = SubResource("StandardMaterial3D_wxnxd")
+size = Vector2(0.04, 0.04)
+
+[sub_resource type="Skin" id="Skin_wxnxd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wxnxd"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 1
+emission_sphere_radius = 1.4
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.01
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svb2n"]
+albedo_color = Color(0.623529, 0.513726, 0.686275, 1)
+emission_enabled = true
+emission = Color(0.623529, 0.513726, 0.686275, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_w2w2c"]
+material = SubResource("StandardMaterial3D_svb2n")
+size = Vector2(0.04, 0.04)
+
+[sub_resource type="Skin" id="Skin_qpwq2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_svb2n"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 1
+emission_sphere_radius = 1.4
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.01
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2w2c"]
+albedo_color = Color(0.207843, 0.741176, 0.741176, 1)
+emission_enabled = true
+emission = Color(0.207843, 0.741176, 0.741176, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hwywf"]
+material = SubResource("StandardMaterial3D_w2w2c")
+size = Vector2(0.04, 0.04)
+
+[sub_resource type="Skin" id="Skin_yv7eh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w2w2c"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 1
+emission_sphere_radius = 1.4
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.01
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpwq2"]
+albedo_color = Color(0.470588, 0.811765, 0.678431, 1)
+emission_enabled = true
+emission = Color(0.470588, 0.811765, 0.678431, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yv7eh"]
+material = SubResource("StandardMaterial3D_qpwq2")
+size = Vector2(0.04, 0.04)
+
+[sub_resource type="Skin" id="Skin_3wfni"]
+
+[node name="TimeDematrializationParticles" type="Node3D"]
+transform = Transform3D(1, 8.54925e-11, -1.16415e-10, 1.62004e-12, 1, 0, 2.91038e-11, 0, 1, 0, 0, 0)
+visible = false
+script = ExtResource("1_s27qk")
+
+[node name="Red" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.019125, 2.01651e-12, -1.459e-12, -3.50487e-13, 0.019125, -3.24804e-11, -2.10828e-13, 3.24804e-11, 0.019125, -0.00455473, 0.0445914, -0.00481375)
+top_level = true
+lifetime = 0.56
+speed_scale = 0.44
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_t2aqy")
+draw_pass_1 = SubResource("QuadMesh_wxnxd")
+draw_skin = SubResource("Skin_wxnxd")
+
+[node name="Purple" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.019125, 2.01651e-12, -1.459e-12, -3.50487e-13, 0.019125, -3.24804e-11, -2.10828e-13, 3.24804e-11, 0.019125, -0.00455473, 0.0445914, -0.00481375)
+top_level = true
+lifetime = 0.56
+speed_scale = 0.44
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_wxnxd")
+draw_pass_1 = SubResource("QuadMesh_w2w2c")
+draw_skin = SubResource("Skin_qpwq2")
+
+[node name="Blue" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.019125, 2.01651e-12, -1.459e-12, -3.50487e-13, 0.019125, -3.24804e-11, -2.10828e-13, 3.24804e-11, 0.019125, -0.00455473, 0.0445914, -0.00481375)
+top_level = true
+lifetime = 0.56
+speed_scale = 0.44
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_svb2n")
+draw_pass_1 = SubResource("QuadMesh_hwywf")
+draw_skin = SubResource("Skin_yv7eh")
+
+[node name="Green" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.019125, 2.01651e-12, -1.459e-12, -3.50487e-13, 0.019125, -3.24804e-11, -2.10828e-13, 3.24804e-11, 0.019125, -0.00455473, 0.0445914, -0.00481375)
+top_level = true
+lifetime = 0.56
+speed_scale = 0.44
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_w2w2c")
+draw_pass_1 = SubResource("QuadMesh_yv7eh")
+draw_skin = SubResource("Skin_3wfni")

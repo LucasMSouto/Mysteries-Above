@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjiq1hyligjum"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t2aqy"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 1
+emission_sphere_radius = 1.4
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.01
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxnxd"]
+depth_draw_mode = 2
+no_depth_test = true
+albedo_color = Color(0.584314, 0.235294, 0.341176, 1)
+emission_enabled = true
+emission = Color(0.584314, 0.235294, 0.341176, 1)
+grow_amount = 0.296
+
+[sub_resource type="QuadMesh" id="QuadMesh_10wag"]
+material = SubResource("StandardMaterial3D_wxnxd")
+size = Vector2(0.04, 0.04)
+
+[sub_resource type="Skin" id="Skin_wxnxd"]
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(0.181321, 6.70752e-11, -8.73115e-11, -3.61666e-12, 0.205642, 0, -7.27596e-12, 3.49246e-10, 0.15071, 0, 0, 0)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_t2aqy")
+draw_pass_1 = SubResource("QuadMesh_10wag")
+draw_skin = SubResource("Skin_wxnxd")
